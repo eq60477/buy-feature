@@ -1,7 +1,7 @@
-import { Button as RadixButton, Text, TextField } from "@radix-ui/themes";
+import { Button as RadixButton, Text } from "@radix-ui/themes";
 import { FC, useState } from "react";
 
-import "./ShoppingCart.css";
+import "./Shoppingcart.css";
 import { CartProps } from "./ShoppingCart.types";
 
 const ShoppingCart: FC<CartProps> = ({ items }) => {
