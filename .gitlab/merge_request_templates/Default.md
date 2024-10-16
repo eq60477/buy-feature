@@ -13,10 +13,10 @@
 ## Assignees
 
 Dhruv Panicker
-/assign_reviewer @6110834
+/assign_reviewer @dh6110834
 
 Khiruthiga Selvan
-/assign_reviewer @6115688
+/assign_reviewer @kh6115688
 
 Simon Buteau
 /assign_reviewer @eq44250
