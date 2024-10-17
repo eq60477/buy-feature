@@ -37,8 +37,7 @@ npm-test:
   script:
     - npx playwright install --with-deps
     - npm run test:component
-    - npm run preview & echo $! > server.pid & npx playwright test
-    - kill $(cat server.pid)
+    - npx playwright test
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"

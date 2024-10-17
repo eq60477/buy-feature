@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Shopping Cart Feature", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:3000");
+    await page.goto("/");
   });
 
   test("should display shopping cart feature and add item to cart", async ({ page }) => {
