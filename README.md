@@ -55,7 +55,6 @@ This will execute the tests for your React components to ensure they are working
 To run the end-to-end tests with Playwright, use:
 
 ```bash
-npm run preview
 npm run test:e2e
 ```
 
