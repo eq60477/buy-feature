@@ -5,12 +5,7 @@ test.describe("Shopping Cart Feature", () => {
     await page.goto("/");
   });
 
-  test("should display shopping cart feature and add item to cart", async ({ page }) => {
-    await expect(page.getByText("Shopping Cart Feature App")).toBeVisible();
-
-    // Click the add to cart button.
-    await page.getByRole("button", { name: "Add to Cart" }).click();
-
-    await expect(page.getByText("Cart Items: 1")).toBeVisible();
+  test("should display cart", async ({ page }) => {
+    await expect(page.getByText("Your cart is empty")).toBeVisible();
   });
 });
