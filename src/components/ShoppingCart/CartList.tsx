@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { CartItem, CartState } from "./ShoppingCart.types";
+import { CartItem } from "./ShoppingCart.types";
 import './Cart.css';
+import { useCart } from "../../contexts/CartContext";
 
 const CartItemCard: React.FC<{ item: CartItem }> = ({ item }) => {
     return (
@@ -16,12 +17,14 @@ const CartItemCard: React.FC<{ item: CartItem }> = ({ item }) => {
     );
   };
 
-const CartList: FC<CartState> = ({lineItems : cartData}) => {
+const CartList: FC = () => {
+    const { state } = useCart();
+    const { lineItems } = state;
   return (
     <div className="cart-left">
           <div className="cart-view">
             <h1>Review your Cart</h1>
-              {cartData.map((item) => (
+              {lineItems.map((item) => (
                 <div className="cart-items"  key={item.id}>
                     <div className="item-details">
                         <CartItemCard key={item.id} item={item}/>

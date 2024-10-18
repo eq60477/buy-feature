@@ -1,9 +1,14 @@
 import { FC } from "react";
-import { CartItem, CartState } from "./ShoppingCart.types";
+import { CartItem } from "./ShoppingCart.types";
 import './Cart.css';
+import { useCart } from "../../contexts/CartContext";
 
 
-const CartSummary: FC<CartState> = ({lineItems : lineItems}, {totalPrice : totalPrice}) => {
+const CartSummary: FC = () => {
+
+    const { state: cartState } = useCart();
+    const { lineItems } = cartState;
+    const { totalPrice } = cartState;
 
     const calculateTotal = () => {
         if (!totalPrice) return 0;

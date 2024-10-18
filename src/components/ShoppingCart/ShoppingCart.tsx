@@ -32,8 +32,8 @@ const ShoppingCart: FC<CartProps> = () => {
       {cartState?.lineItems?.length === 0 ? <Text>Your cart is empty</Text> : 
       (
         <>
-          <CartList lineItems={cartState.lineItems} totalPrice={cartState.totalPrice} discount={cartState.discount} tax={cartState.tax} />
-          <CartSummary totalPrice={cartState.totalPrice} discount={cartState.discount} tax={cartState.tax} lineItems={cartState.lineItems} />
+          <CartList />
+          <CartSummary />
         </>
       )
       }

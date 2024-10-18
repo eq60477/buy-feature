@@ -21,7 +21,7 @@
   }
 
   .cart-right p {
-    margin-bottom: 5px; /* Reduce the margin between paragraphs */
+    margin-bottom: 5px;
   }
   
   .cart-header {
@@ -88,7 +88,7 @@
     display: flex;
     gap: 10px;
     margin-top: 20px;
-    justify-content: flex-end; /* Align buttons to the right */
+    justify-content: flex-end;
     margin-right: 20px;
   }
   
