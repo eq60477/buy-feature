@@ -37,7 +37,7 @@ npm-test:
   script:
     - npx playwright install --with-deps
     - npm run test:component
-    - npm run test:service
+    - npm run test:unit
     - npx playwright test
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
