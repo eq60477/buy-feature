@@ -6,6 +6,6 @@ test.describe("Shopping Cart Feature", () => {
   });
 
   test("should display cart", async ({ page }) => {
-    await expect(page.getByText("Your cart is empty")).toBeVisible();
+    await expect(page.getByText("Review your Cart")).toBeVisible();
   });
 });

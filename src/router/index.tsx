@@ -1,18 +1,26 @@
 import { createBrowserRouter } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import ErrorPage from "../components/ErrorBoundary/ErrorPage";
+import {
+  lazy,
+  Suspense,
+  ReactNode,
+  LazyExoticComponent,
+  ComponentType
+} from "react";
+import ErrorPage from "../components/templates/ErrorBoundary/ErrorPage";
 
-const Cart = lazy(() => import("../Pages/Cart"));
-const CompleteOrder = lazy(() => import("../Pages/CompleteOrder"));
+const Cart = lazy(() => import("../pages/Cart"));
+const CompleteOrder = lazy(() => import("../pages/CompleteOrder"));
 
-const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
+const SuspenseWrapper = ({ children }: { children: ReactNode }) => (
   <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
 );
 
-const createRoute = (
-  path: string,
-  Component: React.LazyExoticComponent<React.ComponentType<any>>
-) => ({
+interface RouteConfig {
+  path: string;
+  Component: LazyExoticComponent<ComponentType<any>>;
+}
+
+const createRoute = ({ path, Component }: RouteConfig) => ({
   path,
   element: (
     <SuspenseWrapper>
@@ -22,9 +30,11 @@ const createRoute = (
   errorElement: <ErrorPage />
 });
 
-const router = createBrowserRouter([
-  createRoute("/", Cart),
-  createRoute("/complete-order", CompleteOrder)
-]);
+const routes = [
+  { path: "/", Component: Cart },
+  { path: "/complete-order", Component: CompleteOrder }
+];
+
+const router = createBrowserRouter(routes.map(createRoute));
 
 export default router;
