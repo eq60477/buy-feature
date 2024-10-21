@@ -14,7 +14,6 @@ const CartList: FC = () => {
   return (
     <div className="cart-left">
       <div className="cart-view">
-        <h1>Review your Cart</h1>
         {lineItems.map((item) => (
           <div className="cart-items" key={item.id}>
             <div className="item-details">
