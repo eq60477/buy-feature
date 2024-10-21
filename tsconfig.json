@@ -14,5 +14,8 @@
     "allowImportingTsExtensions": true,
     "esModuleInterop": true,
   },
-  "include": ["src"]
+  "include": ["src/**/*", "./jest.setup.ts"],
+  "types": ["node", "jest", "@testing-library/jest-dom"]
+
+
 }
