@@ -1,7 +1,12 @@
 {
-  "name": "buy-feature",
-  "private": true,
+  "name": "@buycomponent/buy-feature",
   "version": "1.0.0",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "@buycomponent/buy-feature": "https://experience-layer-plat-6-008971643837.d.codeartifact.us-east-1.amazonaws.com/npm/npm/"
+  },
   "scripts": {
     "dev": "rsbuild dev --open",
     "build": "rsbuild build",
