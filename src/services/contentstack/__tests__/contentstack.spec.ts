@@ -10,7 +10,7 @@ jest.mock('@contentstack/delivery-sdk', () => {
         entry: jest.fn((uid) => ({
           query: jest.fn(() => ({
             find: jest.fn(() => Promise.resolve({ 
-              items: [
+              entries: [
                 {
                   uid: "entry1",
                   banner_title: "Banner Title 1",
