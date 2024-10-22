@@ -14,6 +14,11 @@ default:
 stages:
   - package
   - test
+  - install-node-modules
+  - check-code-build
+  - deploy
+  - deploy-artifact
+
 
 npm-build:
   stage: package
@@ -42,3 +47,38 @@ npm-test:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+include:
+  project: 'cornerstone-factory/tonic-platform/ci-templates'  
+  file: 
+    - storybook/storybook.base.yml   
+
+node-modules-install-job:
+  rules:
+    - when: never
+
+check-code-build-job:
+  rules:
+    - when: never
+
+pages:
+  rules:
+    - when: never
+
+deploy-artifact-job:
+  rules:
+    - when: never
+
+deploy-codeartifact-job:
+  before_script:
+    - echo $CI_SERVER_HOST
+    - echo $EXPLAT_REGISTRY
+    - apt-get update -y && apt install awscli jq -y
+    - ROLE=$(aws sts assume-role --role-arn "arn:aws:iam::${DOMAIN_OWNER}:role/${AWS_IAM_ROLE}" --role-session-name AWSCLI-Session)
+    - export AWS_ACCESS_KEY_ID=$(echo $ROLE | jq -r '.Credentials.AccessKeyId')
+    - export AWS_SECRET_ACCESS_KEY=$(echo $ROLE | jq -r '.Credentials.SecretAccessKey')
+    - export AWS_SESSION_TOKEN=$(echo $ROLE | jq -r '.Credentials.SessionToken')
+    - aws sts get-caller-identity
+    - echo "@buycomponent:registry=${EXPLAT_REGISTRY}" > .npmrc
+    - aws codeartifact login --tool npm --repository npm --domain tonic --domain-owner ${DOMAIN_OWNER} --region us-east-1
+
