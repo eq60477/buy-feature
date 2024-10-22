@@ -15,18 +15,19 @@ const ShoppingCart: FC = () => {
   }, [fetchCartData]);
 
   return (
-    <div className="cart-container">
-      {loading ? (
-        <Text>Loading...</Text>
-      ) : getCartItems?.lineItems?.length === 0 ? (
-        <Text>Your cart is empty</Text>
-      ) : (
-        <>
-          <CartList />
-          <CartSummary />
-        </>
-      )}
-    </div>
+      <div className="cart-container">
+        <h1>Review your Cart</h1>
+        {loading ? (
+            <Text>Loading...</Text>
+        ) : getCartItems?.lineItems?.length === 0 ? (
+            <Text>Your cart is empty</Text>
+        ) : (
+            <>
+              <CartList/>
+              <CartSummary/>
+            </>
+        )}
+      </div>
   );
 };
 
