@@ -8,7 +8,11 @@
     "@buycomponent/buy-feature": "https://experience-layer-plat-6-008971643837.d.codeartifact.us-east-1.amazonaws.com/npm/npm/"
   },
   "scripts": {
+<<<<<<< HEAD
     "dev": "NODE_ENV=development rsbuild dev --open",
+=======
+    "dev": "rsbuild dev --open",
+>>>>>>> 3140b98 (fix: added rsbuild config to fix build issue)
     "build": "NODE_ENV=production rsbuild build",
     "preview": "rsbuild preview",
     "test": "NODE_ENV=test jest",
