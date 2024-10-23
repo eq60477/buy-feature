@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from "react";
+import {  useCallback, useState } from "react";
 import { fetchAllEntries, fetchEntryByUID } from "../services/contentstack/contentstack";
 
 interface Entry {
@@ -16,7 +16,6 @@ const useContent = () => {
         setLoading(true);
         try {
           const result = await fetchAllEntries('hero_banner');
-          console.log(result);
           setEntries(result.items);
         } catch (error) {
           setError("There was an error retrieving the entries.");
@@ -29,7 +28,6 @@ const useContent = () => {
         setLoading(true);
         try {
           const entry = await fetchEntryByUID('hero_banner', uid);
-          console.log(entry); 
           setSingleEntry(entry);
         } catch (error) {
           setError("There was an error retrieving the single entry with this UID.");

@@ -29,7 +29,6 @@ export const fetchAllEntries = async (contentType: string): Promise<FindResponse
         const result: FindResponse<Entry> = {
             items: response.entries as Entry[]
         };
-        //console.log('Response JSON:', JSON.stringify(result, null, 2));
         return result; 
     } catch (error) {
         console.log("There was an error retreiving the entries, ", error); 

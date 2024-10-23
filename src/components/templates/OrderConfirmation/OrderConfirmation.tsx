@@ -1,5 +1,5 @@
 import { Text } from "@radix-ui/themes";
-import { FC, memo, useEffect, useState } from "react";
+import { FC, memo, useEffect} from "react";
 import useContent from "../../../hooks/useContent";
 import "./OrderConfirmation.css";
 
@@ -8,7 +8,7 @@ const OrderConfirmation: FC = () => {
 
   useEffect(() => {
     fetchEntries(); 
-    fetchSingleEntry('blta88b9c28b47e0b26'); 
+    fetchSingleEntry('blta88b9c28b47e0b26');  //Hardcoded UID to fetch specific entry to display content 
   }, [fetchEntries, fetchSingleEntry]); 
 
   if (loading) {
