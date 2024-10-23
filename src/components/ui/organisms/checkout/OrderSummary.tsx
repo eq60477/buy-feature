@@ -131,14 +131,12 @@ const OrderSummary = () => {
       <Flex direction={{ initial: "column", md: "row" }}>
         <Button
           title="Continue Shopping"
-          onClick={() => console.log("Continue Shopping")}
           variant="outline"
           size="4"
           style={{ marginRight: "30px", marginBottom: "10px" }}
         />
         <Button
           title="Complete Order"
-          onClick={() => console.log("Complete Order")}
           size="4"
         />
       </Flex>

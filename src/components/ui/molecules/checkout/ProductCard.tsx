@@ -48,7 +48,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
           {showButton && (
             <Button
               title="Remove"
-              onClick={() => console.log("Product removed")}
               variant="outline"
               style={{ marginLeft: 'auto', marginRight: 'auto' }}
             />
