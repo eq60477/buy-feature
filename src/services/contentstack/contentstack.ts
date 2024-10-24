@@ -31,7 +31,6 @@ export const fetchAllEntries = async (contentType: string): Promise<FindResponse
         };
         return result; 
     } catch (error) {
-        console.log("There was an error retreiving the entries, ", error); 
         throw error; 
     }
 };
@@ -46,7 +45,6 @@ export const fetchEntryByUID = async (contentType: string, uid: string): Promise
             .fetch(); 
         return entry as Entry; 
     } catch (error) {
-        console.log("There was an error retreiving the entry with this UID: ", error); 
         throw error; 
     }
 };

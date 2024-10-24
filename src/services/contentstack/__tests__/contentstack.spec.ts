@@ -39,7 +39,6 @@ jest.mock('@contentstack/delivery-sdk', () => {
 describe('Contentstack Service', () => {
   it('should fetch all entries and return JSON', async () => {
     const data = await fetchAllEntries('hero_banner');
-    console.log('Fetched Entries:', JSON.stringify(data, null, 2));
     expect(data).toEqual({
       items: mockEntries,
     });
@@ -47,7 +46,6 @@ describe('Contentstack Service', () => {
 
   it('should fetch a single entry and return JSON', async () => {
     const data1 = await fetchEntryByUID('hero_banner', 'entry1');
-    console.log("Single entry fetched: ", JSON.stringify(data1, null, 2));
     expect(data1).toEqual(mockSingleEntry);
   });
 });

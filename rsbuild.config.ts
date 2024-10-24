@@ -13,5 +13,6 @@ export default defineConfig({
       },
     },
   },
+  mode: process.env.NODE_ENV === "production" ? "production" : "development",
   plugins: [pluginReact(), pluginCssMinimizer()],
 });

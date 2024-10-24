@@ -1,0 +1,17 @@
+.checkout-order-container{
+    gap: 20px;
+    padding: 50px;
+}
+
+.order-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.complete-order {
+    flex: 0 0 70%;
+}
+
+.monthly-bill {
+    flex: 0 0 30%;
+}

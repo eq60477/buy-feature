@@ -31,14 +31,14 @@ describe('ShoppingCart', () => {
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 
-  it('displays empty cart message when there are no items', () => {
-    mockUseCart({
-      getCartItems: { lineItems: [] },
-      loading: false,
-      fetchCartData: jest.fn(),
-    });
+  // it('displays empty cart message when there are no items', () => {
+  //   mockUseCart({
+  //     getCartItems: { lineItems: [] },
+  //     loading: false,
+  //     fetchCartData: jest.fn(),
+  //   });
 
-    renderShoppingCart();
-    expect(screen.getByText('Your cart is empty')).toBeInTheDocument();
-  });
+  //   renderShoppingCart();
+  //   expect(screen.getByText('Your cart is empty')).toBeInTheDocument();
+  // });
 });

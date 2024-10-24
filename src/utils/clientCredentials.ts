@@ -1,17 +1,18 @@
-
 export const CT_CLIENT_CREDENTIALS : any = {
-    CLIENT_ID: 'GVpsKdcSgHlfBYDr3iRuccEx',
-    CLIENT_SECRET: 'NRJIoNPtf2x-rMy80bqqzXFrRGqGo5Lv',
-    PROJECT_KEY: 'development',
-  }
-  
-  export const CT_BASE_URLS : any = {
-    CT_HOST: 'https://api.us-east-2.aws.commercetools.com',
-    AUTH_URL: 'https://auth.us-east-2.aws.commercetools.com/oauth/token',
+  CLIENT_ID: process.env.PUBLIC_CT_CLIENT_ID,
+  CLIENT_SECRET: process.env.PUBLIC_CT_CLIENT_SECRET,
+  PROJECT_KEY: process.env.PUBLIC_CT_PROJECT_KEY,
   }
 
-  export const CONTENTSTACK_CREDENTIALS: any = {
-    API_KEY: 'blt33214a9f5f9faa1a',
-    DELIVERY_TOKEN: 'cs1d8385708d5864ba111e24d7',
-    ENVIRONMENT: 'development',
+export const CT_BASE_URLS : any = {
+    CT_HOST: process.env.PUBLIC_CT_HOST,
+    AUTH_URL: process.env.PUBLIC_AUTH_URL,
+  }
+
+export const CONTENTSTACK_CREDENTIALS: any = {
+    API_KEY: process.env.PUBLIC_CONTENTSTACK_API_KEY,
+    DELIVERY_TOKEN: process.env.PUBLIC_CONTENTSTACK_DELIVERY_TOKEN,
+    ENVIRONMENT: process.env.PUBLIC_CONTENTSTACK_ENVIRONMENT,
   };
+
+

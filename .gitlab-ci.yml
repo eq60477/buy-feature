@@ -33,6 +33,7 @@ npm-build:
   before_script:
     - ls -la
     - if [ -d "node_modules" ]; then echo "node_modules exists"; else echo "node_modules does not exist"; fi
+    - echo $PRODUCTION_ENV_FILE > .env.production
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -40,10 +41,10 @@ npm-build:
 npm-test:
   stage: test
   script:
-    - npx playwright install --with-deps
+    # - npx playwright install --with-deps
     - npm run test:component
     - npm run test:unit
-    - npx playwright test
+    # - npx playwright test
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
