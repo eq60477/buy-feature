@@ -8,10 +8,10 @@
     "@buycomponent/buy-feature": "https://experience-layer-plat-6-008971643837.d.codeartifact.us-east-1.amazonaws.com/npm/npm/"
   },
   "scripts": {
-    "dev": "rsbuild dev --open",
+    "dev": "NODE_ENV=development rsbuild dev --open",
     "build": "NODE_ENV=production rsbuild build",
     "preview": "rsbuild preview",
-    "test": "cross-env NODE_ENV=development jest",
+    "test": "NODE_ENV=test jest",
     "test:watch": "jest --watch",
     "test:component": "jest  --testPathPattern='src/components'",
     "test:unit": "jest --testPathPattern='src/(services|utils)'",
@@ -43,7 +43,7 @@
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.13",
-    "@types/node": "^22.7.1",
+    "@types/node": "^22.7.9",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "husky": "^9.1.6",

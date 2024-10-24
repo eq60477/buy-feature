@@ -1,7 +1,6 @@
 import contentstack from '@contentstack/delivery-sdk';
 import { CONTENTSTACK_CREDENTIALS } from '../../utils/clientCredentials';
 
-
 const stack = contentstack.stack({
     apiKey: CONTENTSTACK_CREDENTIALS.API_KEY,
     deliveryToken: CONTENTSTACK_CREDENTIALS.DELIVERY_TOKEN,

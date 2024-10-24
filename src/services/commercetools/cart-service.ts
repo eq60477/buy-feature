@@ -2,7 +2,6 @@ import { CT_BASE_URLS, CT_CLIENT_CREDENTIALS } from '../../utils/clientCredentia
 import { CART_ID, ERROR_MESSAGES } from '../../utils/constants';
 
 const cartUrl = CT_BASE_URLS.CT_HOST + '/' + CT_CLIENT_CREDENTIALS.PROJECT_KEY + '/carts';
-
 const cartId = CART_ID;
 
 export const getCart = async (token: string) => {

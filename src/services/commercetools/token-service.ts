@@ -5,8 +5,9 @@ import {
 
 export const fetchAccessToken = async () => {
   const { CLIENT_ID, CLIENT_SECRET } = CT_CLIENT_CREDENTIALS;
+  const { AUTH_URL } = CT_BASE_URLS;
   try {
-    const response = await fetch(CT_BASE_URLS.AUTH_URL, {
+    const response = await fetch(AUTH_URL as string, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
