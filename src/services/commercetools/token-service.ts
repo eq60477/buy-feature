@@ -4,15 +4,17 @@ import {
 } from "../../utils/clientCredentials";
 
 export const fetchAccessToken = async () => {
+  const { CLIENT_ID, CLIENT_SECRET } = CT_CLIENT_CREDENTIALS;
+  const { AUTH_URL } = CT_BASE_URLS;
   try {
-    const response = await fetch(CT_BASE_URLS.AUTH_URL, {
+    const response = await fetch(AUTH_URL as string, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         Authorization:
           "Basic " +
           btoa(
-            `${CT_CLIENT_CREDENTIALS.CLIENT_ID}:${CT_CLIENT_CREDENTIALS.CLIENT_SECRET}`
+            `${CLIENT_ID}:${CLIENT_SECRET}`
           )
       },
       body: new URLSearchParams({
@@ -25,9 +27,8 @@ export const fetchAccessToken = async () => {
     }
 
     const data = await response.json();
-    console.log("Access token fetched successfully:", data.access_token);
     return data.access_token;
   } catch (error) {
-    console.error("Error fetching access token:", error);
+    throw error;
   }
 };

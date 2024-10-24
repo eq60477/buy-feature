@@ -77,3 +77,12 @@ interface RemoveTokenAction {
 }
 
 export type TokenAction = AddTokenAction | RemoveTokenAction;
+export interface UseCartType {
+    clearCart: () => void;
+    loading: boolean;
+    cartData: any;
+    cartIsPending: boolean;
+    cartIsFetching: boolean;
+    cartError: unknown;
+    status: string;
+}

@@ -1,10 +1,16 @@
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { AppContextProps, useAppContext } from "../contexts/AppContext";
-import { CartActionTypes, TokenActionTypes } from "../types/cart.type";
+import {
+  CartActionTypes,
+  TokenActionTypes,
+  UseCartType
+} from "../types/cart.type";
 import { getCart } from "../services/commercetools/cart-service";
 import { fetchAccessToken } from "../services/commercetools/token-service";
+import { useQuery } from "@tanstack/react-query";
+import { UseQueryResult } from "@tanstack/react-query";
 
-const useCart = () => {
+const useCart = (): UseCartType => {
   const {
     cartState,
     cartDispatch,
@@ -12,34 +18,55 @@ const useCart = () => {
     tokenDispatch
   }: AppContextProps = useAppContext();
 
-  const fetchCartData = useCallback(async () => {
+  const fetchCartData = async () => {
     try {
-      const token = tokenState.access_token || (await fetchAccessToken());
-      tokenDispatch({ type: TokenActionTypes.ADD_TOKEN, payload: token });
+      if (cartState.cartItem.lineItems.length === 0) {
+        const token = tokenState.access_token || (await fetchAccessToken());
+        tokenDispatch({ type: TokenActionTypes.ADD_TOKEN, payload: token });
 
-      const cart = await getCart(token);
-      if (!cart) {
-        throw new Error("Failed to fetch cart items");
+        const cart = await getCart(token);
+        if (!cart) {
+          throw new Error("Failed to fetch cart items");
+        }
+        cartDispatch({ type: CartActionTypes.GET_CART, payload: cart });
+        return cart;
+      } else {
+        return cartState.cartItem;
       }
-      cartDispatch({ type: CartActionTypes.GET_CART, payload: cart });
     } catch (error) {
-      console.error("Failed to fetch cart items:", error);
+      // Todo: log error
+      throw error;
     }
-  }, [tokenState.access_token, tokenDispatch, cartDispatch]);
+  };
+
+  const {
+    isPending: cartIsPending,
+    error: cartError,
+    data: cartData,
+    isFetching: cartIsFetching,
+    status
+  }: UseQueryResult = useQuery({
+    queryKey: ["cartData"],
+    staleTime: 1000 * 60 * 60, // Data is considered stale and refreshed after 1 hour
+    queryFn: fetchCartData
+  });
 
   const clearCart = useCallback(() => {
     try {
       cartDispatch({ type: CartActionTypes.CLEAR_CART });
     } catch (error) {
-      console.error("Failed to clear cart:", error);
+      throw error;
     }
   }, [cartDispatch]);
 
   return {
-    getCartItems: cartState.cartItem,
-    fetchCartData,
     clearCart,
-    loading: cartState.loading
+    loading: cartState.loading,
+    cartData,
+    cartIsPending,
+    cartIsFetching,
+    cartError,
+    status
   };
 };
 

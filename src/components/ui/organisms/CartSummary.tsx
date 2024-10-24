@@ -1,16 +1,16 @@
 import { FC } from "react";
 import useCart from "../../../hooks/useCart";
 import { calculatePromotion, calculateTotal } from "../../../utils/calculator";
+import { LineItem, UseCartType } from "../../../types/cart.type";
 
 const CartSummary: FC = () => {
-  const { getCartItems } = useCart();
-  const { lineItems, totalPrice } = getCartItems;
+  const { cartData }: UseCartType = useCart();
 
   return (
     <div className="cart-right">
       <h2>Monthly Bill</h2>
       <ul>
-        {lineItems.map((item) => (
+        {cartData?.lineItems.map((item: LineItem) => (
           <li key={item.id}>
             <table>
               <tbody>
@@ -35,7 +35,7 @@ const CartSummary: FC = () => {
           <tbody>
             <tr>
               <td width={130}>Subtotal</td>
-              <td>${calculateTotal(totalPrice)}</td>
+              <td>${calculateTotal(cartData?.totalPrice)}</td>
             </tr>
           </tbody>
         </table>

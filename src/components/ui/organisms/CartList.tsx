@@ -2,10 +2,10 @@ import { FC } from "react";
 import CartItemCard from "../molecules/CardItem";
 import useCart from "../../../hooks/useCart";
 import Button from "../atoms/Button";
+import { LineItem, UseCartType } from "../../../types/cart.type";
 
 const CartList: FC = () => {
-  const { getCartItems, loading } = useCart();
-  const { lineItems } = getCartItems;
+  const { cartData, loading }: UseCartType = useCart();
 
   if (loading) {
     return <div>Loading...</div>;
@@ -14,7 +14,7 @@ const CartList: FC = () => {
   return (
     <div className="cart-left">
       <div className="cart-view">
-        {lineItems.map((item) => (
+        {cartData?.lineItems.map((item: LineItem) => (
           <div className="cart-items" key={item.id}>
             <div className="item-details">
               <CartItemCard key={item.id} item={item} />
