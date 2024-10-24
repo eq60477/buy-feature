@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export const CT_CLIENT_CREDENTIALS: {
   CLIENT_ID: string;
   CLIENT_SECRET: string;
@@ -25,15 +24,3 @@ export const CONTENTSTACK_CREDENTIALS: {
   ENVIRONMENT:
     process.env.PUBLIC_CONTENTSTACK_ENVIRONMENT || "default-environment"
 };
-=======
-export const CT_CLIENT_CREDENTIALS : any = {
-  CLIENT_ID: process.env.PUBLIC_CT_CLIENT_ID,
-  CLIENT_SECRET: process.env.PUBLIC_CT_CLIENT_SECRET,
-  PROJECT_KEY: process.env.PUBLIC_CT_PROJECT_KEY,
-}
-
-export const CT_BASE_URLS : any = {
-  CT_HOST: process.env.PUBLIC_CT_HOST,
-  AUTH_URL: process.env.PUBLIC_AUTH_URL,
-}
->>>>>>> 95e4da0 (fix: removed all hard coded secrets)
