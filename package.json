@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "rsbuild dev --open",
-    "build": "NODE_ENV=production rsbuild build",
+    "build": "NODE_ENV=production npm run locales && rsbuild build",
     "preview": "rsbuild preview",
     "test": "NODE_ENV=test npm run test:unit && npm run test:component",
     "locales-toc": "i18next-resources-for-ts toc -i ./public/locales/ -o ./src/types/resources.ts",
