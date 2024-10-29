@@ -30,10 +30,21 @@ export const cartReducer = (
       return getCart(state, action.payload);
     case CartActionTypes.CLEAR_CART:
       return cartInitialState;
+    case CartActionTypes.REMOVE_ITEM:
+      console.log("remove item", action.payload);
+      return removeItem(state, action.payload);
     default:
       return state;
   }
 };
+
+const removeItem = (state: CartState, id: string): CartState => ({
+  ...state,
+  cartItem: {
+    ...state.cartItem,
+    lineItems: state.cartItem.lineItems.filter((item) => item.id !== id)
+  }
+});
 
 const getCart = (state: CartState, cartItem: CartItem): CartState => ({
   ...state,

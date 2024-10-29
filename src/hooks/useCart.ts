@@ -5,10 +5,11 @@ import {
   TokenActionTypes,
   UseCartType
 } from "../types/cart.type";
-import { getCart } from "../services/commercetools/cart-service";
+import { getCart, removeLineItem } from "../services/commercetools/cart-service";
 import { fetchAccessToken } from "../services/commercetools/token-service";
 import { useQuery } from "@tanstack/react-query";
 import { UseQueryResult } from "@tanstack/react-query";
+import { ERROR_MESSAGES } from "@utils/constants";
 
 const useCart = (): UseCartType => {
   const {
@@ -22,7 +23,7 @@ const useCart = (): UseCartType => {
     try {
       if (cartState.cartItem.lineItems.length === 0) {
         const token = tokenState.access_token || (await fetchAccessToken());
-        tokenDispatch({ type: TokenActionTypes.ADD_TOKEN, payload: token });
+        tokenDispatch({ type: TokenActionTypes.ADD_TOKEN, payload: { access_token: token } });
 
         const cart = await getCart(token);
         if (!cart) {
@@ -59,6 +60,21 @@ const useCart = (): UseCartType => {
     }
   }, [cartDispatch]);
 
+  const removeItem = async(itemId: string) => {
+    try {
+      const token = tokenState.access_token || (await fetchAccessToken());
+      tokenDispatch({ type: TokenActionTypes.ADD_TOKEN, payload: { access_token: token } });
+
+        const removedItemId = await removeLineItem(token, itemId);
+        if (!removedItemId) {
+          throw new Error(ERROR_MESSAGES.REMOVE_ITEM_FAILED);
+        }
+      cartDispatch({ type: CartActionTypes.REMOVE_ITEM, payload: itemId });
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return {
     clearCart,
     loading: cartState.loading,
@@ -66,7 +82,8 @@ const useCart = (): UseCartType => {
     cartIsPending,
     cartIsFetching,
     cartError,
-    status
+    status,
+    removeItem
   };
 };
 

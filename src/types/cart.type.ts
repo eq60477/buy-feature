@@ -43,7 +43,8 @@ export interface CartState {
 
 export enum CartActionTypes {
     GET_CART = "GET_CART",
-    CLEAR_CART = "CLEAR_CART"
+    CLEAR_CART = "CLEAR_CART",
+    REMOVE_ITEM = "REMOVE_ITEM"
 }
 
 interface GetCartAction {
@@ -55,7 +56,12 @@ interface ClearCartAction {
     type: CartActionTypes.CLEAR_CART;
 }
 
-export type CartAction = GetCartAction | ClearCartAction;
+interface RemoveItemCartAction {
+    type: CartActionTypes.REMOVE_ITEM;
+    payload: string;
+}
+
+export type CartAction = GetCartAction | ClearCartAction | RemoveItemCartAction;
 
 export interface TokenState {
     access_token: string;
@@ -85,4 +91,5 @@ export interface UseCartType {
     cartIsFetching: boolean;
     cartError: unknown;
     status: string;
+    removeItem: (itemId: string) => void;
 }
