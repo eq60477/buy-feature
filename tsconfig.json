@@ -19,7 +19,8 @@
       "@ui/*": ["./src/components/ui/*"],
       "@pages/*": ["./src/pages/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@customTypes/*": ["./src/types/*"]
     }
   },
   "include": ["src/**/*", "./jest.setup.ts"],

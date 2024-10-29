@@ -1,0 +1,65 @@
+{
+  "translation": {
+    "Welcome to React": "Welcome to React and react-i18next",
+    "completeOrderNewClient": {
+      "title": "Complete Your Order you new client!",
+      "submitButton": "Complete order"
+    },
+    "orderSidebarTitle": "Order summary",
+    "newCustomerForm": {
+      "billingAddress": "Billing address",
+      "shippingAddress": "Shipping address",
+      "fields": {
+        "name": {
+          "label": "Name",
+          "placeholder": ""
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "Email"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "XXX XXX-XXXX"
+        },
+        "streetName": {
+          "label": "Street name",
+          "placeholder": ""
+        },
+        "streetNumber": {
+          "label": "Street number",
+          "placeholder": ""
+        },
+        "apartment": {
+          "label": "Apartment"
+        },
+        "postalCode": {
+          "label": "Postal code",
+          "placeholder": "X1X 1X1"
+        },
+        "city": {
+          "label": "City",
+          "placeholder": ""
+        },
+        "province": {
+          "label": "Province"
+        }
+      }
+    },
+    "provinces": {
+      "AB": "Alberta",
+      "BC": "British Columbia",
+      "MB": "Manitoba",
+      "NB": "New Brunswick",
+      "NL": "Newfoundland and Labrador",
+      "NS": "Nova Scotia",
+      "ON": "Ontario",
+      "PE": "Prince Edward Island",
+      "QC": "Quebec",
+      "SK": "Saskatchewan",
+      "NT": "Northwest Territories",
+      "NU": "Nunavut",
+      "YT": "Yukon"
+    }
+  }
+}
