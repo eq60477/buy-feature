@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+}
+.main-content {
+    display: block;
+}
+.side-bar {
+    display: block;
+}

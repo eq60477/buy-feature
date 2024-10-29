@@ -82,4 +82,9 @@ deploy-codeartifact-job:
     - aws sts get-caller-identity
     - echo "@buycomponent:registry=${EXPLAT_REGISTRY}" > .npmrc
     - aws codeartifact login --tool npm --repository npm --domain tonic --domain-owner ${DOMAIN_OWNER} --region us-east-1
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        paths:
+          - 'package.json' #Changes to Version will publish this artifact
 
