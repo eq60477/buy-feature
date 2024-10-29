@@ -30,17 +30,17 @@ export const getCart = async (token: string) => {
     }
   };
 
-export const removeLineItem = async (token: string, itemId: string) => {
+export const removeLineItem = async (token: string, itemId: string, cartVersion: number) => {
+  console.log("version ", cartVersion);
     try {
-      const response = JSON.parse('{"ok": "True"}');
-      console.log(response);
-      /* const response = await fetch(cartUrl+'/'+cartId, {
+      const response = await fetch(cartUrl+'/'+cartId, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+          version: cartVersion,
           actions: [
             {
               action: 'removeLineItem',
@@ -48,13 +48,13 @@ export const removeLineItem = async (token: string, itemId: string) => {
             }
           ]
         })
-      }); */
+      });
 
       if (!response.ok) {
         throw new Error(ERROR_MESSAGES.REMOVE_ITEM_FAILED);
       }
 
-      return itemId;
+      return response;
     } catch (error) {
       throw error;
     }

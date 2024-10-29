@@ -30,6 +30,8 @@ export interface Money {
 }
 
 export interface CartItem {
+    id: string;
+    version : number;
     lineItems: LineItem[];
     totalPrice: Money;
     discount: Money;

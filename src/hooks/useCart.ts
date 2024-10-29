@@ -7,7 +7,7 @@ import {
 } from "../types/cart.type";
 import { getCart, removeLineItem } from "../services/commercetools/cart-service";
 import { fetchAccessToken } from "../services/commercetools/token-service";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { UseQueryResult } from "@tanstack/react-query";
 import { ERROR_MESSAGES } from "@utils/constants";
 
@@ -62,18 +62,30 @@ const useCart = (): UseCartType => {
 
   const removeItem = async(itemId: string) => {
     try {
-      const token = tokenState.access_token || (await fetchAccessToken());
-      tokenDispatch({ type: TokenActionTypes.ADD_TOKEN, payload: { access_token: token } });
-
-        const removedItemId = await removeLineItem(token, itemId);
-        if (!removedItemId) {
+      const confirmed = window.confirm('Are you sure you want to remove this item from the cart?');
+      if (confirmed) {
+        const token = tokenState.access_token || (await fetchAccessToken());
+        tokenDispatch({ type: TokenActionTypes.ADD_TOKEN, payload: { access_token: token } });
+        console.log("cartState.cartItem.version", cartState.cartItem.version);
+        const response = await removeLineItem(token, itemId, cartState.cartItem.version);
+        if (!response) {
           throw new Error(ERROR_MESSAGES.REMOVE_ITEM_FAILED);
         }
-      cartDispatch({ type: CartActionTypes.REMOVE_ITEM, payload: itemId });
-    } catch (error) {
-      throw error;
-    }
+        return itemId;
+      } 
+      } catch (error) {
+        throw error;
+      }
   };
+
+  const removeMutation = useMutation({
+    mutationFn: (itemId: string) => removeItem(itemId),
+    onSuccess: (data: any) => {
+      console.log("Item removed successfully ",data);
+      cartDispatch({ type: CartActionTypes.REMOVE_ITEM, payload: data });
+      window.location.reload();
+    }
+  })
 
   return {
     clearCart,
@@ -83,7 +95,7 @@ const useCart = (): UseCartType => {
     cartIsFetching,
     cartError,
     status,
-    removeItem
+    removeItem: removeMutation.mutate
   };
 };
 

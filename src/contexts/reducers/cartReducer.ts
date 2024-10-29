@@ -7,6 +7,8 @@ import {
 
 export const cartInitialState: CartState = {
   cartItem: {
+    id: "",
+    version: 0,
     lineItems: [],
     totalPrice: {
       centAmount: 0
@@ -31,7 +33,6 @@ export const cartReducer = (
     case CartActionTypes.CLEAR_CART:
       return cartInitialState;
     case CartActionTypes.REMOVE_ITEM:
-      console.log("remove item", action.payload);
       return removeItem(state, action.payload);
     default:
       return state;
@@ -50,6 +51,8 @@ const getCart = (state: CartState, cartItem: CartItem): CartState => ({
   ...state,
   cartItem: {
     ...state.cartItem,
+    id: cartItem.id,
+    version: cartItem.version,
     lineItems: cartItem.lineItems,
     totalPrice: cartItem.totalPrice,
     discount: cartItem.discount,
