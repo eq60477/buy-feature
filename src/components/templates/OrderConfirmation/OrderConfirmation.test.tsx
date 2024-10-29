@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import OrderConfirmation from './OrderConfirmation';
 import useContent from '../../../hooks/useContent';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { AppProvider } from '../../../contexts/AppContext';
 
 jest.mock('../../../hooks/useContent');
 
@@ -11,9 +12,11 @@ const mockUseContent = (contentState: any) => {
 
 const renderOrderConfirmation = () => {
   return render(
-    <Router>
-      <OrderConfirmation />
-    </Router>
+    <AppProvider> 
+      <Router>
+        <OrderConfirmation />
+      </Router>
+    </AppProvider>
   );
 };
 

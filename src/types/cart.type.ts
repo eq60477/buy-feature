@@ -41,11 +41,16 @@ export interface CartItem {
 export interface CartState {
     cartItem: CartItem;
     loading: boolean;
+    orderConfirmation: any; 
+    orderError: string | null;
 }
+
 
 export enum CartActionTypes {
     GET_CART = "GET_CART",
-    CLEAR_CART = "CLEAR_CART",
+    CLEAR_CART = "CLEAR_CART", 
+    CONFIRM_ORDER = "CONFIRM_ORDER", 
+    ORDER_ERROR = "ORDER_ERROR",
     REMOVE_ITEM = "REMOVE_ITEM"
 }
 
@@ -58,12 +63,23 @@ interface ClearCartAction {
     type: CartActionTypes.CLEAR_CART;
 }
 
+
+interface ConfirmOrderAction {
+    type: CartActionTypes.CONFIRM_ORDER;
+    payload: any;
+}
+
+interface OrderErrorAction {
+    type: CartActionTypes.ORDER_ERROR;
+    payload: string;
+}
+
 interface RemoveItemCartAction {
     type: CartActionTypes.REMOVE_ITEM;
     payload: string;
 }
 
-export type CartAction = GetCartAction | ClearCartAction | RemoveItemCartAction;
+export type CartAction = GetCartAction | ClearCartAction | ConfirmOrderAction | OrderErrorAction | RemoveItemCartAction;
 
 export interface TokenState {
     access_token: string;
