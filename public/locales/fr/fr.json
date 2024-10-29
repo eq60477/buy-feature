@@ -1,0 +1,65 @@
+{
+  "translation": {
+    "Welcome to React": "Bienvenue à React et react-i18next",
+    "completeOrderNewClient": {
+      "title": "Completer votre commande comme un nouveau client",
+      "submitButton": "Commander"
+    },
+    "orderSidebarTitle": "Facture",
+    "newCustomerForm": {
+      "billingAddress": "Adresse de facturation",
+      "shippingAddress": "Adresse de livraison",
+      "fields": {
+        "name": {
+          "label": "Nom",
+          "placeholder": ""
+        },
+        "email": {
+          "label": "Adresse courriel",
+          "placeholder": "xxx@xxx.ca"
+        },
+        "phone": {
+          "label": "Téléphone",
+          "placeholder": "XXX XXX-XXXX"
+        },
+        "streetName": {
+          "label": "Nom de rue",
+          "placeholder": ""
+        },
+        "streetNumber": {
+          "label": "Numéro de porte",
+          "placeholder": ""
+        },
+        "postalCode": {
+          "label": "Code postal",
+          "placeholder": "X1X 1X1"
+        },
+        "apartment": {
+          "label": "Appartement"
+        },
+        "city": {
+          "label": "Ville",
+          "placeholder": ""
+        },
+        "province": {
+          "label": "Province"
+        }
+      }
+    },
+    "provinces": {
+      "AB": "Alberta",
+      "BC": "Colombie-Britannique",
+      "MB": "Manitoba",
+      "NB": "Nouveau-Brunswick",
+      "NL": "Terre-Neuve-et-Labrador",
+      "NS": "Nouvelle-Écosse",
+      "ON": "Ontario",
+      "PE": "Île-du-Prince-Édouard",
+      "QC": "Québec",
+      "SK": "Saskatchewan",
+      "NT": "Territoires du Nord-Ouest",
+      "NU": "Nunavut",
+      "YT": "Yukon"
+    }
+  }
+}
