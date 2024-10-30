@@ -9,7 +9,6 @@ const cartId = CART_ID;
 
 export const confirmOrder = async () => {
     try {
-        console.log("CALLED FROM SERVICE"); 
         const token = await fetchAccessToken(); 
         const response = await axios.post(
             cartUrl, 
@@ -26,15 +25,12 @@ export const confirmOrder = async () => {
                 }
             }
         ); 
-        console.log("THIS IS THE RESPONSE DATA:", response.data); 
         return response.data; 
 
     } catch (error) {
         if (axios.isAxiosError(error) && error.response) {
-            console.error("Error response:", error.response.data);
             throw new Error(`Failed to confirm the order: ${error.response.data.message}`);
         } else {
-            console.error("Error:", error);
             throw new Error('Failed to confirm the order'); 
         }
     }

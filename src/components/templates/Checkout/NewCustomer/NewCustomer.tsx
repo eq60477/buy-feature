@@ -40,10 +40,8 @@ const CheckoutNewCustomer: React.FC = () => {
     console.log("formValues = ", formValues)
     try {
       const order = await handleCompleteOrder();
-      console.log("TRUE FROM NEW CUSTOMER ", order);
       navigate("/confirmation", { state: { orderConfirmation: order } });
     } catch (error) {
-      console.log("FALSE FROM NEW CUSTOMER ", error);
       navigate("/confirmation", { state: { orderError: "There was an error submitting the order." } });
     }
   };

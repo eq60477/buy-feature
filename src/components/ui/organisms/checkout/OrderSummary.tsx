@@ -78,10 +78,8 @@ const OrderSummary = () => {
   const completeOrder = async () => {
     try {
       const order = await handleCompleteOrder();
-      console.log("TRUE FROM ORDER SUMMARY ", order); 
       navigate("/confirmation", { state: { orderConfirmation: order } });
     } catch (error) {
-      console.log("FALSE FROM ORDER SUMMARY ", error); 
       navigate("/confirmation", { state: { orderError: "There was an error submitting the order." } });
     }
   };

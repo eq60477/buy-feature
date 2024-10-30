@@ -18,14 +18,11 @@ const useCheckout = () => {
 
   const handleCompleteOrder = async () => {
     try{
-      console.log("CALLED FROM HOOK"); 
       const order = await confirmOrder(); 
       cartDispatch({ type: CartActionTypes.CONFIRM_ORDER, payload: order });
-      console.log("FROM THE HOOK THIS IS ORDER, ", order); 
       setOrderConfirmation(order);
       return order; 
     } catch (error) {
-      console.log("THIS IS THE ERROR BRANCH"); 
       cartDispatch({ type: CartActionTypes.ORDER_ERROR, payload: "Failed to complete order" });
       setOrderError("Failed to complete order");
       throw error;
@@ -39,7 +36,7 @@ const useCheckout = () => {
     seviceNowIsFetching,
     status, 
     handleCompleteOrder, 
-    orderConfirmation, // Add orderConfirmation
+    orderConfirmation, 
     orderError
   };
 };

@@ -15,8 +15,7 @@ const OrderConfirmation: FC = () => {
 
   useEffect(() => {
     fetchEntries(); 
-    fetchSingleEntry('blta88b9c28b47e0b26'); 
-    console.log("This needs to be printed", orderConfirmation); 
+    fetchSingleEntry('blta88b9c28b47e0b26');
   }, [fetchEntries, fetchSingleEntry]); 
 
   if (loading || cartIsPending || cartIsFetching) {
@@ -31,15 +30,24 @@ const OrderConfirmation: FC = () => {
     
   return (
     <div className="order-confirmation-container">
-      <h1>Order Confirmation</h1>
-      <Text>Thank you for your order, [Customer Name]!</Text>
-      <Text>{orderConfirmation ? (
-        <Text>Your order confirmation number is: {orderConfirmation.id}</Text>
-      ) : (
-        <Text>{orderError}</Text>
-      )}</Text>
-      <div className="order-summary">
-        <h2>Order Summary</h2>
+      <div className="spaced-section">
+        <Text className="normal-text"><strong>Dear Customer,</strong></Text>
+      </div>
+      <div className="spaced-section">
+        <Text className="normal-text">
+          Thank You. Your request has been received. Please review the following for more information. We recommend you save this email or print it for your records.
+        </Text>
+      </div>
+      <div className="spaced-section">
+        <Text className="bold-text">Confirmation Number: </Text>
+        <Text className="normal-text">{orderConfirmation ? orderConfirmation.id : orderError}</Text>
+      </div>
+      <div className="spaced-section">
+        <Text className="bold-text">Order Date: </Text>
+        <Text className="normal-text">{orderConfirmation ? orderConfirmation.createdAt : orderError}</Text>
+      </div>
+      <div className="order-summary spaced-section">
+        <Text className="bold-text">Order Summary</Text>
         <ul>
           {lineItems.map((item: { id: string; name: { "en-CA": string }; quantity: number; price: { value: { centAmount: number } } }) => (
             <li key={item.id}>
@@ -54,35 +62,32 @@ const OrderConfirmation: FC = () => {
         </div>
       </div>
       {entries.length > 0 && (
-        <div>
-          <h2>Data from Contentstack:</h2>
-          <ul>
-            <li><Text>UID: {entries[0].uid}</Text></li>
-            <li><Text>Banner Title: {entries[0].banner_title}</Text></li>
-          </ul>
-          <ul>
-            <li><Text>UID: {entries[1].uid}</Text></li>
-            <li><Text>Banner Title: {entries[1].banner_title}</Text></li>
-          </ul>
+        <div className="spaced-section">
+          <Text className="bold-text underline-text">Footer Info TBD</Text>
+          <div>
+            <Text>Banner Title: {entries[0].banner_title}</Text>
+          </div>
+          <div>
+            <Text>Banner Title: {entries[1].banner_title}</Text>
+          </div>
         </div>
       )}
       {singleEntry && (
-        <div>
+        <div className="spaced-section">
           <Text>Single Entry:</Text>
-          <ul>
-            <li><Text>UID: {singleEntry.uid}</Text></li>
-            <li><Text>Banner Title: {singleEntry.banner_title}</Text></li>
-          </ul>
+          <div>
+            <Text>Banner Title: {singleEntry.banner_title}</Text>
+          </div>
         </div>
       )}
-      <Text>
-        Please read our <a href="/terms-and-conditions">Terms & Conditions</a>.
-      </Text>
-
-      <Text>For any queries, please contact our customer care.</Text>
-      <Text>
-        <a href="/account">Go to your account page</a>
-      </Text>
+      <div className="spaced-section">
+        <Text>
+          Please read our <a href="/terms-and-conditions">Terms & Conditions</a>.
+        </Text>
+      </div>
+      <div className="button-container">
+        <button className="back-button">Back to Main Page</button>
+      </div>
     </div>
   );
 };

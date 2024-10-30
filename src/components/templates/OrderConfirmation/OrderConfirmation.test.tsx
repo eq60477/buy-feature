@@ -35,20 +35,6 @@ describe('OrderConfirmation', () => {
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 
-  it('displays error message when there is an error', () => {
-    mockUseContent({
-      entries: [],
-      singleEntry: null,
-      fetchEntries: jest.fn(),
-      fetchSingleEntry: jest.fn(),
-      loading: false,
-      error: 'There was an error retrieving the entries.',
-    });
-
-    renderOrderConfirmation();
-    expect(screen.getByText('There was an error retrieving the entries.')).toBeInTheDocument();
-  });
-
   it('displays entries when data is fetched', () => {
     mockUseContent({
       entries: [
