@@ -1,7 +1,8 @@
 import { Box, Card, Flex, Skeleton, Avatar, Text } from "@radix-ui/themes";
 import React, { memo } from "react";
-import { LineItem } from "../../../../types/cart.type";
-import Button from "../../atoms/Button";
+import useCart from "@hooks/useCart";
+import { LineItem } from "@customTypes/cart.type";
+import Button from "@components/ui/atoms/Button";
 
 interface ProductCardProps {
   isFetching: boolean;
@@ -16,6 +17,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   showButton = true,
   status
 }) => {
+
+const {removeItem} = useCart();
   return (
     <Box maxWidth="350px">
       <Card style={{ padding: 0}}>
@@ -50,6 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               title="Remove"
               variant="outline"
               style={{ marginLeft: 'auto', marginRight: 'auto' }}
+              onClick={() => removeItem(item.id)}
             />
           )}
         </Flex>
