@@ -81,6 +81,8 @@ deploy-codeartifact-job:
     - export AWS_SESSION_TOKEN=$(echo $ROLE | jq -r '.Credentials.SessionToken')
     - aws sts get-caller-identity
     - echo "@buycomponent:registry=${EXPLAT_REGISTRY}" > .npmrc
+    - git config --global user.email "buycomponent@bell.ca"
+    - git config --global user.name "buycomponentadmin"
     - npm version patch
     - aws codeartifact login --tool npm --repository npm --domain tonic --domain-owner ${DOMAIN_OWNER} --region us-east-1
   rules:
