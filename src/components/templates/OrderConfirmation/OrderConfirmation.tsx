@@ -15,16 +15,12 @@ const OrderConfirmation: FC = () => {
 
   useEffect(() => {
     fetchEntries(); 
-    fetchSingleEntry('blta88b9c28b47e0b26');
+    fetchSingleEntry('blta88b9c28b47e0b26'); //TODO: Hardcoded UID to fetch specific entry to display content 
   }, [fetchEntries, fetchSingleEntry]); 
 
   if (loading || cartIsPending || cartIsFetching) {
     return <div>Loading...</div>;
   }
-
-  // if (error || cartError) {
-  //   return <div>{error || cartError}</div>;
-  // }
 
   const { lineItems, totalPrice } = cartData;
     
