@@ -9,9 +9,9 @@
   },
   "scripts": {
     "dev": "rsbuild dev --open",
-    "build": "cross-env NODE_ENV=production npm run locales && rsbuild build",
+    "build": "NODE_ENV=production npm run locales && rsbuild build",
     "preview": "rsbuild preview",
-    "test": "cross-env NODE_ENV=test npm run test:unit && npm run test:component",
+    "test": "NODE_ENV=test npm run test:unit && npm run test:component",
     "locales-toc": "i18next-resources-for-ts toc -i ./public/locales/ -o ./src/types/resources.ts",
     "locales-interface": "i18next-resources-for-ts interface -i ./public/locales/ -o ./src/types/resources.d.ts",
     "locales": "npm run locales-toc && npm run locales-interface",
