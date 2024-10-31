@@ -1,0 +1,26 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - cd configurable-product
+        - npm ci
+    build:
+      commands:
+        - env | grep -e PUBLIC_CT_CLIENT_ID >> .env.production
+        - env | grep -e PUBLIC_CT_CLIENT_SECRET >> .env.production
+        - env | grep -e PUBLIC_CT_PROJECT_KEY >> .env.production
+        - env | grep -e PUBLIC_CT_HOST >> .env.production
+        - env | grep -e PUBLIC_AUTH_URL >> .env.production
+        - env | grep -e PUBLIC_CONTENTSTACK_API_KEY >> .env.production
+        - env | grep -e PUBLIC_CONTENTSTACK_DELIVERY_TOKEN >> .env.production
+        - env | grep -e PUBLIC_CONTENTSTACK_ENVIRONMENT >> .env.production
+        - npm run build
+        - npm run preview
+  artifacts:
+    baseDirectory: ./dist
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
