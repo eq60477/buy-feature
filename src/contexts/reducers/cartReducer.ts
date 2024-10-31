@@ -20,7 +20,9 @@ export const cartInitialState: CartState = {
       centAmount: 0
     }
   },
-  loading: true
+  loading: true, 
+  orderConfirmation: null, 
+  orderError: null 
 };
 
 export const cartReducer = (
@@ -34,6 +36,10 @@ export const cartReducer = (
       return cartInitialState;
     case CartActionTypes.REMOVE_ITEM:
       return removeItem(state, action.payload);
+    case CartActionTypes.CONFIRM_ORDER: 
+      return confirmOrder(state, action.payload);
+    case CartActionTypes.ORDER_ERROR: 
+      return orderError(state, action.payload); 
     default:
       return state;
   }
@@ -59,4 +65,16 @@ const getCart = (state: CartState, cartItem: CartItem): CartState => ({
     tax: cartItem.tax
   },
   loading: false
+});
+
+const confirmOrder = (state: CartState, orderConfirmation: any): CartState => ({
+  ...state,
+  orderConfirmation,
+  orderError: null
+});
+
+const orderError = (state: CartState, orderError: string): CartState => ({
+  ...state,
+  orderError,
+  orderConfirmation: null
 });

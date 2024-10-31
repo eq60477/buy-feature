@@ -8,6 +8,8 @@ import {
 import { getMonthlyExpiryDate } from "../../../../utils/formatter";
 import useCart from "../../../../hooks/useCart";
 import Button from "../../atoms/Button";
+import useCheckout from "../../../../hooks/useCheckout"
+import { useNavigate } from "react-router-dom";
 
 const LineItemComponent = ({
   item,
@@ -70,6 +72,17 @@ const SummaryRow = ({
 
 const OrderSummary = () => {
   const { cartData, cartIsFetching } = useCart();
+  const { handleCompleteOrder, orderConfirmation, orderError } = useCheckout();
+  const navigate = useNavigate();
+
+  const completeOrder = async () => {
+    try {
+      const order = await handleCompleteOrder();
+      navigate("/confirmation", { state: { orderConfirmation: order } });
+    } catch (error) {
+      navigate("/confirmation", { state: { orderError: "There was an error submitting the order." } });
+    }
+  };
 
   const totalPromotions = useMemo(
     () => calculatePromotion(cartData?.totalPromotions),
@@ -138,6 +151,7 @@ const OrderSummary = () => {
         <Button
           title="Complete Order"
           size="4"
+          onClick={completeOrder}
         />
       </Flex>
     </Box>

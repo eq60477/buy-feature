@@ -1,15 +1,50 @@
 .order-confirmation-container {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .order-confirmation-container h1 {
-    margin-bottom: 20px;
-  }
-  
-  .order-confirmation-container a {
-    color: blue;
-    text-decoration: underline;
-  }
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.order-confirmation-container h1 {
+  margin-bottom: 20px;
+}
+
+.order-confirmation-container a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.bold-text {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.normal-text {
+  font-size: 1em;
+}
+
+.underline-text {
+  text-decoration: underline;
+}
+
+.spaced-section {
+  margin-top: 20px;
+}
+
+.order-summary {
+  margin-top: 20px;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-button {
+  background-color: #003778;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
