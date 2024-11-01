@@ -3,7 +3,6 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd configurable-product
         - npm ci
     build:
       commands:
