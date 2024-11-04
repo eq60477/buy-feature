@@ -1,7 +1,7 @@
 import { TokenState, TokenAction } from "../../types/cart.type";
 
 export const initialTokenState: TokenState = {
-  access_token: ""
+  access_token: "eNcLeaoQut0u8QIOmGLKIYeXiKeaILJA"
 };
 
 export const tokenReducer = (state: TokenState, action: TokenAction): TokenState => {

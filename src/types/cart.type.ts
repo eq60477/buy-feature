@@ -109,5 +109,7 @@ export interface UseCartType {
     cartIsFetching: boolean;
     cartError: unknown;
     status: string;
+    cartState: CartState;
+    tokenState: TokenState;
     removeItem: (itemId: string) => void;
 }

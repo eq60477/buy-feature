@@ -72,7 +72,7 @@ const SummaryRow = ({
 
 const OrderSummary = () => {
   const { cartData, cartIsFetching } = useCart();
-  const { handleCompleteOrder, orderConfirmation, orderError } = useCheckout();
+  const { handleCompleteOrder } = useCheckout();
   const navigate = useNavigate();
 
   const completeOrder = async () => {
@@ -132,9 +132,6 @@ const OrderSummary = () => {
       />
       <br />
       <Grid>
-        <Text size={{ initial: "2", md: "1" }}>
-          (i) Taxes are calculated at checkout
-        </Text>
         <Text size={{ initial: "2", md: "1" }}>
           (i) Your Crave subscription will be set to renew on{" "}
           {getMonthlyExpiryDate()}

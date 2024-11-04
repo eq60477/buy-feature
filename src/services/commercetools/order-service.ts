@@ -7,20 +7,20 @@ const cartUrl = CT_BASE_URLS.CT_HOST + '/' + CT_CLIENT_CREDENTIALS.PROJECT_KEY +
 const cartId = CART_ID;
 
 
-export const confirmOrder = async () => {
+export const confirmOrder = async (cartVersion: number, accessToken: string) => {
     try {
-        const token = await fetchAccessToken(); 
+        // const token = await fetchAccessToken(); // Todo: change later
         const response = await axios.post(
             cartUrl, 
             {
-                version: 3, 
+                version: cartVersion || 0, 
                 cart: {
                     id: CART_ID
                 }
             }, 
             {
                 headers: {
-                  Authorization: `Bearer ${token}`,
+                  Authorization: `Bearer ${accessToken}`,
                   'Content-Type': 'application/json'
                 }
             }

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { LineItem } from '../../../types/cart.type';
 import Button from "../atoms/Button";
 import useCart from "../../../hooks/useCart";
 
  const CartItemCard: React.FC<{ item: LineItem }> = ({ item }) => {
-
+const [showModal, setShowModal] = useState<boolean>(false);
   const {removeItem} = useCart();
+
+  
 
     return (
       <div key={item.id} className="cart-item-card">
