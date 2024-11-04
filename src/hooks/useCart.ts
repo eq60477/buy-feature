@@ -66,7 +66,6 @@ const useCart = (): UseCartType => {
       if (confirmed) {
         const token = tokenState.access_token || (await fetchAccessToken());
         tokenDispatch({ type: TokenActionTypes.ADD_TOKEN, payload: { access_token: token } });
-        console.log("cartState.cartItem.version", cartState.cartItem.version);
         const response = await removeLineItem(token, itemId, cartState.cartItem.version);
         if (!response) {
           throw new Error(ERROR_MESSAGES.REMOVE_ITEM_FAILED);
@@ -81,7 +80,6 @@ const useCart = (): UseCartType => {
   const removeMutation = useMutation({
     mutationFn: (itemId: string) => removeItem(itemId),
     onSuccess: (data: any) => {
-      console.log("Item removed successfully ",data);
       cartDispatch({ type: CartActionTypes.REMOVE_ITEM, payload: data });
       window.location.reload();
     }
@@ -95,6 +93,8 @@ const useCart = (): UseCartType => {
     cartIsFetching,
     cartError,
     status,
+    cartState,
+    tokenState,
     removeItem: removeMutation.mutate
   };
 };

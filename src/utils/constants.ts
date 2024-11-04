@@ -1,4 +1,4 @@
-export const CART_ID='f50ce9f1-0f81-4ce0-90d5-0a4de4eb3bfa';
+export const CART_ID='a93225b7-c27b-4de6-b06c-0d0d6554e5b2';
 
 export const ERROR_MESSAGES = {
     CART_NOT_FOUND: "The Cart ID was not found.",

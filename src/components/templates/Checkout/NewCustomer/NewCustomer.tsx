@@ -7,6 +7,7 @@ import Layout from "@ui/Layout/Layout.tsx";
 import {CustomerFormElement} from "@customTypes/customer.type.ts";
 import useCheckout from "../../../../hooks/useCheckout"; 
 import { useNavigate } from "react-router-dom"; 
+import OrderSummary from "@components/ui/organisms/checkout/OrderSummary";
 
 const CheckoutNewCustomer: React.FC = () => {
   const { t } : { t: Translation }= useTranslation();
@@ -56,12 +57,7 @@ const CheckoutNewCustomer: React.FC = () => {
                   sidebarComponent={
                   <>
                     <h2>{t('orderSidebarTitle')}</h2>
-                    <Button
-                      title={t("completeOrderNewClient.submitButton")}
-                      type="submit"
-                      className="Button"
-                      style={{ marginTop: 20 }}
-                    />
+                    {<OrderSummary />}
                   </>
                     }
                 />

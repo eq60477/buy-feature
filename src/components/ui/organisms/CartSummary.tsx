@@ -2,9 +2,12 @@ import { FC } from "react";
 import useCart from "../../../hooks/useCart";
 import { calculatePromotion, calculateTotal } from "../../../utils/calculator";
 import { LineItem, UseCartType } from "../../../types/cart.type";
+import Button from "../atoms/Button";
+import { useNavigate } from "react-router-dom";
 
 const CartSummary: FC = () => {
   const { cartData }: UseCartType = useCart();
+  const navigate = useNavigate();
 
   return (
     <div className="cart-right">
@@ -44,6 +47,13 @@ const CartSummary: FC = () => {
           (i) Your crave subscription will be set to renew on{" "}
           {new Date().toLocaleDateString()}
         </p>
+        <br />
+        <Button
+          title="Checkout"
+          size="3"
+          style={{ marginRight: "30px", marginBottom: "10px" }}
+          onClick={() => navigate('/complete-order')}
+        />
       </div>
     </div>
   );

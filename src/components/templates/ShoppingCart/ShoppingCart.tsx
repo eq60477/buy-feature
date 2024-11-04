@@ -21,7 +21,6 @@ const ShoppingCart: FC = () => {
             <Text>Your cart is empty</Text>
         ) : (
             <>
-            <Link to="/complete-order">Complete Order</Link>
               <CartList/>
               <CartSummary/>
             </>
